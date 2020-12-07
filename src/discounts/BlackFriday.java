@@ -10,9 +10,10 @@ public class BlackFriday implements Discount {
     }
 
     public double getDiscount() {
-        if (index > 80) {
-            return 80;
+        if (index >= 79) {
+            System.out.print(index);
+            return 0.8;
         }
-        return index + 1;
+        return (double) index / 10.0; // 1% per product sucks, so I made it 10%
     }
 }

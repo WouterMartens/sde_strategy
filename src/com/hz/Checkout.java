@@ -14,6 +14,8 @@ public class Checkout {
         DiscountCalculator discountCalculator = new DiscountCalculator(customer);
         if(salesAction == SalesAction.ChristmasEve) {
             discountCalculator.setChristmasEve(true);
+        } else if (salesAction == SalesAction.BlackFriday) {
+            discountCalculator.setBlackFriday(true);
         }
 
         // Welcome customer

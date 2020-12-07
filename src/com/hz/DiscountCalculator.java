@@ -12,12 +12,10 @@ public class DiscountCalculator {
     public void setChristmasEve(boolean christmasEve) {
         isChristmasEve = christmasEve;
     }
-
     private boolean isChristmasEve;
 
-    private boolean isBlackFriday;
-
     public void setBlackFriday(boolean blackFriday) { isBlackFriday = blackFriday; }
+    private boolean isBlackFriday;
 
     public DiscountCalculator(Customer customer) {
         this.customer = customer;
@@ -26,7 +24,6 @@ public class DiscountCalculator {
     public double getDiscount(Product product, int index) {
         boolean isFirstProduct = index == 0;
 
-        // on Christmas Eve, 1st product 20%, the next 12.5% discount
         if(isChristmasEve) {
             this.discount = new ChristmasEve(isFirstProduct);
         } else if (isBlackFriday) {

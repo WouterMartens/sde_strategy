@@ -7,7 +7,7 @@ This code shows a shopping example with a checkout calculating proper discount. 
 New customers pay full price, regular customers enjoy a 15% discount.
 
 ### Christmas Eve
-On December 24th, every customer is granted 20% discount on the first product and 12.5% on the other products
+On December 24th, every customer is being granted 20% discount on the first product and 12.5% on the other products
 
 ### Black Friday
-On Black Friday, things go crazy. Every customer is awared a discount equal to the number of products in their basket, up to 80% off!
+On Black Friday, things go crazy. Every customer is being awarded a discount equal to the number of products in their basket, up to 80% off!

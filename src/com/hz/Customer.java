@@ -30,7 +30,6 @@ public class Customer {
     }
 
     public boolean isRegular() {
-
         return this.customerType == CustomerType.Regular;
     }
 }
