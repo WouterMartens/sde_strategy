@@ -1,10 +1,13 @@
 package com.hz;
 
 import products.Product;
+import discounts.*;
 
 public class DiscountCalculator {
 
     private Customer customer;
+
+    private Discount discount;
 
     public void setChristmasEve(boolean christmasEve) {
         isChristmasEve = christmasEve;
@@ -12,32 +15,34 @@ public class DiscountCalculator {
 
     private boolean isChristmasEve;
 
+    private boolean isBlackFriday;
+
+    public void setBlackFriday(boolean blackFriday) { isBlackFriday = blackFriday; }
+
     public DiscountCalculator(Customer customer) {
         this.customer = customer;
     }
 
     public double getDiscount(Product product, int index) {
-
-        double discount = 0.0;
-
         boolean isFirstProduct = index == 0;
 
         // on Christmas Eve, 1st product 20%, the next 12.5% discount
         if(isChristmasEve) {
-
-            if(isFirstProduct) {
-                discount = .20;
-            } else {
-                discount = .125;
-            }
-
+            this.discount = new ChristmasEve(isFirstProduct);
+        } else if (isBlackFriday) {
+            this.discount = new BlackFriday(index);
+        } else {
+            this.discount = new NoSales(this.customer);
         }
 
-        // Default situation: new customers full price, regular 15% off
-        else if(customer.isRegular()) {
-            discount = .15;
-        }
-
-        return 1 - discount;
+        return 1 - this.discount.getDiscount();
     }
+
+//    public void setDiscount(Discount discount) {
+//        this.discount = discount;
+//    }
+//
+//    public double calculateDiscount() {
+//        return this.discount.getDiscount();
+//    }
 }
