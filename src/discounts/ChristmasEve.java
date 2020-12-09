@@ -1,13 +1,13 @@
 package discounts;
 
+import products.Product;
+
+import java.util.ArrayList;
+
 public class ChristmasEve implements Discount {
-    private boolean isFirstProduct;
+    public double getDiscount(Product product, int index, ArrayList<Product> items) {
+        boolean isFirstProduct = index == 0;
 
-    public ChristmasEve(boolean isFirstProduct) {
-        this.isFirstProduct = isFirstProduct;
-    }
-
-    public double getDiscount() {
         if (isFirstProduct) {
             return .2;
         }

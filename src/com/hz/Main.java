@@ -10,7 +10,7 @@ public class Main {
     public static void main(String[] args) {
 
         // There is a shop with a checkout
-        Checkout kassa5 = new Checkout(SalesAction.BlackFriday);
+        Checkout kassa5 = new Checkout(SalesAction.NoSale);
 
         // Two customers enter the shop
         Customer piet = new Customer(CustomerType.Regular, "Piet");

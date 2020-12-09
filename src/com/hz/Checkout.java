@@ -1,5 +1,10 @@
 package com.hz;
 
+import discounts.BlackFriday;
+import discounts.ChristmasEve;
+import discounts.NoSale;
+import discounts.Regular;
+
 public class Checkout {
 
     private SalesAction salesAction;
@@ -12,10 +17,15 @@ public class Checkout {
 
         // init checkout
         DiscountCalculator discountCalculator = new DiscountCalculator(customer);
-        if(salesAction == SalesAction.ChristmasEve) {
-            discountCalculator.setChristmasEve(true);
+
+        if (salesAction == SalesAction.ChristmasEve) {
+            discountCalculator.setDiscount(new ChristmasEve());
         } else if (salesAction == SalesAction.BlackFriday) {
-            discountCalculator.setBlackFriday(true);
+            discountCalculator.setDiscount(new BlackFriday());
+        } else if(customer.isRegular()) {
+            discountCalculator.setDiscount(new Regular());
+        } else {
+            discountCalculator.setDiscount(new NoSale());
         }
 
         // Welcome customer

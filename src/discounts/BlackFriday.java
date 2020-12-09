@@ -1,19 +1,15 @@
 package discounts;
 
 import com.hz.ShoppingCart;
+import products.Product;
+
+import java.util.ArrayList;
 
 public class BlackFriday implements Discount {
-    private int index;
-
-    public BlackFriday(int index) {
-        this.index = index;
-    }
-
-    public double getDiscount() {
-        if (index >= 79) {
-            System.out.print(index);
+    public double getDiscount(Product product, int index, ArrayList<Product> items) {
+        if (items.size() > 8) {
             return 0.8;
         }
-        return (double) index / 10.0; // 1% per product sucks, so I made it 10%
+        return ((double) items.size()) / 10.0;
     }
 }
