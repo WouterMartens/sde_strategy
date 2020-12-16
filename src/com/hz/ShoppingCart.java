@@ -1,11 +1,12 @@
 package com.hz;
+import discounts.Discount;
 import products.Product;
 
 import java.util.ArrayList;
 
 public class ShoppingCart extends ArrayList<Product> {
 
-    public double getTotalPrice(DiscountCalculator discountCalculator) {
+    public double getTotalPrice(Discount discount) {
 
         double totalPrice = 0.0;
 
@@ -13,8 +14,8 @@ public class ShoppingCart extends ArrayList<Product> {
 
             int index = this.indexOf(product);
 
-            double discount = discountCalculator.getDiscount(product, index, this);
-            double price = product.getPrice() * discount;
+            double multiplier = 1 - discount.getDiscount(product, index, this);
+            double price = product.getPrice() * multiplier;
 
             totalPrice += price;
         }
